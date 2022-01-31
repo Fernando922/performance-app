@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 import { View, Text, TextInput, StyleSheet, Button } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
@@ -16,18 +16,22 @@ const Home = () => {
     setFriends(data);
   }
 
+  const handleFollow = useCallback(() => {
+    console.log("follow user");
+  }, []);
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Amigos</Text>
       <TextInput
-        placeholder="Nome do cliente"
+        placeholder="Nome do amigo"
         onChangeText={setName}
         style={styles.input}
       />
 
       <Button title="Buscar" onPress={handleSearch} />
       <ScrollView style={styles.list}>
-        <FriendList data={friends} />
+        <FriendList data={friends} follow={handleFollow} />
       </ScrollView>
     </View>
   );
