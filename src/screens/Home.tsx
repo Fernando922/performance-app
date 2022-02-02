@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from "react";
 
 import { View, Text, TextInput, StyleSheet, Button } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
 import { FriendList } from "../components/FriendList";
 
 const Home = () => {
@@ -30,9 +29,7 @@ const Home = () => {
       />
 
       <Button title="Buscar" onPress={handleSearch} />
-      <ScrollView style={styles.list}>
-        <FriendList data={friends} follow={handleFollow} />
-      </ScrollView>
+      <FriendList data={friends} follow={handleFollow} />
     </View>
   );
 };
